@@ -2,22 +2,18 @@ import React, { useState } from "react";
 
 function Palindrome(){
 
-    let [userInput, setUserInput ] = useState('')
-    let [ palindrome, setPalindrome ] = useState('')
+    const [userInput, setUserInput ] = useState('')
+    const [ palindrome, setPalindrome ] = useState(false)
+    const [ checked, setChecked] = useState(false)
 
 
-    let checkPalindrome = () => setPalindrome = (userInput) => {
-        let forwards = userInput;
-        let backwards = userInput;
-        backwards = backwards.split('');
-        backwards = backwards.reverse();
-        backwards = backwards.join('');
+    const checkPalindrome = () => {
+        setChecked(true)
+        let backwards = userInput.split('').reverse().join('');
 
-        if(forwards === backwards) {
+        if(userInput === backwards) {
             setPalindrome(true)
-        } else {
-            setPalindrome(false)
-        }
+        } 
     }
 
     return(
@@ -25,7 +21,7 @@ function Palindrome(){
             <h4>Palindrome</h4>
             <input  className="inputLine" onChange={(e) => setUserInput(e.target.value)}></input>
             <button className="confirmationButton" onClick={checkPalindrome}>Submit</button>
-            <span className="resultsBox">Palindrome: {palindrome}</span>
+            <span className="resultsBox">Palindrome: {checked ? JSON.stringify(palindrome) : ''}</span>
 
         </div>
     );

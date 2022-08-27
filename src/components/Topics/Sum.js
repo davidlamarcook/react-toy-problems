@@ -6,7 +6,7 @@ function Sum(){
     let [number2, setNumber2] = useState(0)
     let [sum, setSum] = useState(null)
 
-    let add = () => setSum(parseInt(number1) + parseInt(number2))
+    let add = () => setSum((+number1) + (+number2))
 
     return(
         <div className="puzzleBox sumPB">
